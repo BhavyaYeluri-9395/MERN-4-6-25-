@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Count Paragraphs</title>
+  <title>Count User Paragraphs</title>
   <script type="text/javascript">
-    function countpara() {
-      var totalpara = document.getElementsByTagName("p");
-      alert("Total <p> tags are: " + totalpara.length);
+    function addAndCountPara() {
+      // Get user input
+      var userInput = document.getElementById("userInput").value;
+
+      // Clear previous paragraphs
+      var container = document.getElementById("paraContainer");
+      container.innerHTML = "";
+
+      // Split input by newline and create <p> elements
+      var lines = userInput.split("\n");
+      for (var i = 0; i < lines.length; i++) {
+        if (lines[i].trim() !== "") {
+          var p = document.createElement("p");
+          p.textContent = lines[i];
+          container.appendChild(p);
+        }
+      }
+
+      // Count paragraphs
+      var totalPara = container.getElementsByTagName("p");
+      alert("Total <p> tags are: " + totalPara.length);
     }
   </script>
 </head>
 <body>
-  <p>This is a paragraph</p>
+  <h3>Enter paragraphs (one per line):</h3>
+  <textarea id="userInput" rows="6" cols="50" placeholder="Type your paragraphs here..."></textarea><br><br>
 
-  <p>
-    Here we are going to count total number of paragraphs 
-    by getElementByTagName() method.
-  </p>
+  <button onclick="addAndCountPara()">Add & Count Paragraphs</button>
 
-  <p>Let's see the simple example</p>
-
-  <button onclick="countpara()">Count Paragraph</button>
+  <h3>Output:</h3>
+  <div id="paraContainer"></div>
 </body>
 </html>
