@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Total Genders Count</title>
+  <title>Count Gender Options</title>
   <script type="text/javascript">
     function totalelements() {
       var allgenders = document.getElementsByName("gender");
-      document.write("Total Genders: " + allgenders.length);
+      document.getElementById("result").innerText = "Total Genders: " + allgenders.length;
     }
   </script>
 </head>
 <body>
   <form>
-    Male: <input type="radio" name="gender" value="male">
-    Female: <input type="radio" name="gender" value="female">
-    Others: <input type="radio" name="gender" value="others"><br><br>
-
-    <input type="button" onclick="totalelements()" value="Total Genders">
+    Male:
+    <input type="radio" name="gender" value="male">
+    Female:
+    <input type="radio" name="gender" value="female">
+    Others:
+    <input type="radio" name="gender" value="others">
+    
+    <br><br>
+    <input type="button" value="Total Genders" onclick="totalelements()">
+    <p id="result">Total Genders: </p>
   </form>
 </body>
 </html>
